@@ -1,0 +1,33 @@
+Output: Gerber X2 Files
+Type  : GerberX2
+From  : Variant [[No Variations]] of Project [Regulator.PrjPcb]
+   Generated File[REG_PCB_Copper_Signal_Top.gbr]
+   Generated File[REG_PCB_Copper_Signal_Bot.gbr]
+   Generated File[REG_PCB_Pads_Bot.gbr]
+   Generated File[REG_PCB_Pads_Top.gbr]
+   Generated File[REG_PCB_Legend_Bot.gbr]
+   Generated File[REG_PCB_Soldermask_Bot.gbr]
+   Generated File[REG_PCB_Paste_Bot.gbr]
+   Generated File[REG_PCB_Legend_Top.gbr]
+   Generated File[REG_PCB_Paste_Top.gbr]
+   Generated File[REG_PCB_Soldermask_Top.gbr]
+   Generated File[REG_PCB_Keep-out.gbr]
+   Generated File[REG_PCB_Top_3D_Body.gbr]
+   Generated File[REG_PCB_Bottom_Component_Center.gbr]
+   Generated File[REG_PCB_Bottom_Courtyard.gbr]
+   Generated File[REG_PCB_Bottom_Assembly.gbr]
+   Generated File[REG_PCB_Top_Assembly.gbr]
+   Generated File[REG_PCB_Top_Component_Center.gbr]
+   Generated File[REG_PCB_Mechanical_1.gbr]
+   Generated File[REG_PCB_Bottom_3D_Body.gbr]
+   Generated File[REG_PCB_Top_Courtyard.gbr]
+   Generated File[REG_PCB_Profile.gbr]
+   Generated File[REG_PCB.RUL]
+   Generated File[REG_PCB.EXTREP]
+   Generated File[REG_PCB.REP]
+
+
+Files Generated   : 24
+Documents Printed : 0
+
+Finished Output Generation At 14:14:04 On 13/02/2025

@@ -1,0 +1,461 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 9em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD22\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">13/02/2025</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">14:08:05</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:01</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc" class="file"><acronym title="C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc">C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">1</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">34</td></tr>
+</table>
+</td>
+</table><a name="ID3YRAMUKBB1RHLR3RBG4DBUFYVHGQWWEJ5Z0SKRPIHWYIYQNGWKJJ"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDCNVMKG2WNTGUIEA3XUAEVTKPJGW4MY1PYAEG1GFQISI5NJEUFNVG">Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again</a></td>
+<td class="column2">1</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">1</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTDOMPL2LZBTFKLTV3IOAVLBEZCYMVRFITQS0QPGS0KG42GBL1WNO">Clearance Constraint (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDJXADTQJ2WMWEF5ZJDA1KCMN4RLFYI2UAUYRHX4OXFQA4EW4HUFZO">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQ1ZP3UOIOXTWD5S2XCBUHURJVNH2ACGJYZ3PIIHDU3P4AERFXH3D">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">13</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDGQOKN5AXGO02DKZSZ2RCA0PWMGO5YUM2PXH5TCJYLVKAKH0WV05E">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">1</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDIVRDTJKZ3WCAHDOAEV0UGQQNGBCUVSFQQ3FZK1FSIEOGV3IGZTYF">Width Constraint (Min=11.811mil) (Max=19.685mil) (Preferred=11.811mil) (All)</a></td>
+<td class="column2">9</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDVLPV0PB2SENGKPQPY55BSWRLHMAPDAXFJNJE4KLLZNPD0VN3DIKE">Power Plane Connect Rule(Relief Connect )(Expansion=20mil) (Conductor Width=10mil) (Air Gap=10mil) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#ID05T22NNUATFUF4R4BRZO0NUH5ZGAUUJCL1R5ZE4YHR4C1NTXPB">Hole Size Constraint (Min=1mil) (Max=100mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKIP24QIOL44VKHLLVZDBT3UFUFLKXZV3A51MWVNWYAWXMWKNDGQL">Hole To Hole Clearance (Gap=10mil) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDC2OX2DVR4PAFICBZK2RPCU04ONBJAAKTNCXMBWMCUQB2WDFE4SDC">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</a></td>
+<td class="column2">3</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID2THI02OXY41OK4ECIABYJDCFJOLZBPLBK4YUUEILUV41HAH3KAJ">Silk To Solder Mask (Clearance=10mil) (IsPad),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDNL0ZZ4GPMSS0IXVTDGUVJO3LUG5VAGYHJ5CPECNL2ZSPOQ4ZTDP">Silk to Silk (Clearance=10mil) (All),(All)</a></td>
+<td class="column2">2</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDAM03FACIN3JSMXVBJDNNA1XIEJQT5Y3VILOCBOJ0BAGS4EQITNQK">Net Antennae (Tolerance=0mil) (All)</a></td>
+<td class="column2">6</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDH5MTGABUJI0CP5GHUQE4YZKHNPTLKJK5G5C1U4F335VIPXHSMWM">Height Constraint (Min=0mil) (Max=1000mil) (Prefered=500mil) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">34</td>
+</tr>
+</table><br><a name="IDY3BMPHBWHCGDO5ARKJ5MSNRU2OJUE4121HLVFCU3W0KS53HTLHH"><h2>Warnings</h2></a><a name="IDCNVMKG2WNTGUIEA3XUAEVTKPJGW4MY1PYAEG1GFQISI5NJEUFNVG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="warning">Design contains shelved or modified (but not repoured) polygons. The result of DRC is not correct. Recommended to restore/repour all polygons and proceed with DRC again</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1">Polygon named: GND_L02_P000 On Top Layer</td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDQ1ZP3UOIOXTWD5S2XCBUHURJVNH2ACGJYZ3PIIHDU3P4AERFXH3D"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Un-Routed Net Constraint ( (All) )</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5695mil|Location2.X=5755mil|Location1.Y=1245mil|Location2.Y=1305mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5695mil|Location2.X=5755mil|Location1.Y=1245mil|Location2.Y=1305mil|Absolute=True">Un-Routed Net Constraint: Arc (5750mil,1300mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5695mil|Location2.X=5755mil|Location1.Y=1520mil|Location2.Y=1580mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5695mil|Location2.X=5755mil|Location1.Y=1520mil|Location2.Y=1580mil|Absolute=True">Un-Routed Net Constraint: Arc (5750mil,1525mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6795mil|Location2.X=6855mil|Location1.Y=1245mil|Location2.Y=1305mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6795mil|Location2.X=6855mil|Location1.Y=1245mil|Location2.Y=1305mil|Absolute=True">Un-Routed Net Constraint: Arc (6800mil,1300mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6795mil|Location2.X=6855mil|Location1.Y=1520mil|Location2.Y=1580mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6795mil|Location2.X=6855mil|Location1.Y=1520mil|Location2.Y=1580mil|Absolute=True">Un-Routed Net Constraint: Arc (6800mil,1525mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5695mil|Location2.X=5705mil|Location1.Y=1295mil|Location2.Y=1530mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5695mil|Location2.X=5705mil|Location1.Y=1295mil|Location2.Y=1530mil|Absolute=True">Un-Routed Net Constraint: Track (5700mil,1300mil)(5700mil,1525mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5745mil|Location2.X=5935mil|Location1.Y=1245mil|Location2.Y=1255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5745mil|Location2.X=5935mil|Location1.Y=1245mil|Location2.Y=1255mil|Absolute=True">Un-Routed Net Constraint: Track (5750mil,1250mil)(5930mil,1250mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5745mil|Location2.X=6805mil|Location1.Y=1570mil|Location2.Y=1580mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5745mil|Location2.X=6805mil|Location1.Y=1570mil|Location2.Y=1580mil|Absolute=True">Un-Routed Net Constraint: Track (5750mil,1575mil)(6800mil,1575mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5925mil|Location2.X=6805mil|Location1.Y=1245mil|Location2.Y=1255mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5925mil|Location2.X=6805mil|Location1.Y=1245mil|Location2.Y=1255mil|Absolute=True">Un-Routed Net Constraint: Track (5930mil,1250mil)(6800mil,1250mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6010mil|Location2.X=6275mil|Location1.Y=1307.598mil|Location2.Y=1510mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6010mil|Location2.X=6275mil|Location1.Y=1307.598mil|Location2.Y=1510mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Track (6110mil,1373.583mil)(6110mil,1407.598mil) on Top Layer And Via (6175mil,1410mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6845mil|Location2.X=6855mil|Location1.Y=1295mil|Location2.Y=1530mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6845mil|Location2.X=6855mil|Location1.Y=1295mil|Location2.Y=1530mil|Absolute=True">Un-Routed Net Constraint: Track (6850mil,1300mil)(6850mil,1525mil) on Top Layer Dead Copper - Net Not Assigned.</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6031mil|Location2.X=6129mil|Location1.Y=1306mil|Location2.Y=1404.394mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6031mil|Location2.X=6129mil|Location1.Y=1306mil|Location2.Y=1404.394mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (6050mil,1385.394mil) from Top Layer to Bottom Layer And Via (6110mil,1325mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6091mil|Location2.X=6444mil|Location1.Y=1291mil|Location2.Y=1344mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6091mil|Location2.X=6444mil|Location1.Y=1291mil|Location2.Y=1344mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (6110mil,1325mil) from Top Layer to Bottom Layer And Via (6425mil,1310mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6406mil|Location2.X=6639.394mil|Location1.Y=1291mil|Location2.Y=1453.606mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6406mil|Location2.X=6639.394mil|Location1.Y=1291mil|Location2.Y=1453.606mil|Absolute=True">Un-Routed Net Constraint: Net GND Between Via (6425mil,1310mil) from Top Layer to Bottom Layer And Via (6620.394mil,1434.606mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDGQOKN5AXGO02DKZSZ2RCA0PWMGO5YUM2PXH5TCJYLVKAKH0WV05E"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Modified Polygon (Allow modified: No), (Allow shelved: No)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5720mil|Location2.X=6820mil|Location1.Y=1270mil|Location2.Y=1560mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5720mil|Location2.X=6820mil|Location1.Y=1270mil|Location2.Y=1560mil|Absolute=True">Modified Polygon: Polygon Not Repour After Edit  (GND_L02_P000) on Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDIVRDTJKZ3WCAHDOAEV0UGQQNGBCUVSFQQ3FZK1FSIEOGV3IGZTYF"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Width Constraint (Min=11.811mil) (Max=19.685mil) (Preferred=11.811mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5708.145mil|Location2.X=5730.186mil|Location1.Y=1256.967mil|Location2.Y=1271.145mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5708.145mil|Location2.X=5730.186mil|Location1.Y=1256.967mil|Location2.Y=1271.145mil|Absolute=True">Width Constraint: Arc (5750mil,1300mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5708.145mil|Location2.X=5730.087mil|Location1.Y=1553.855mil|Location2.Y=1568.132mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5708.145mil|Location2.X=5730.087mil|Location1.Y=1553.855mil|Location2.Y=1568.132mil|Absolute=True">Width Constraint: Arc (5750mil,1525mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6828.855mil|Location2.X=6850.798mil|Location1.Y=1258.145mil|Location2.Y=1272.421mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6828.855mil|Location2.X=6850.798mil|Location1.Y=1258.145mil|Location2.Y=1272.421mil|Absolute=True">Width Constraint: Arc (6800mil,1300mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6828.855mil|Location2.X=6850.897mil|Location1.Y=1552.678mil|Location2.Y=1566.855mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6828.855mil|Location2.X=6850.897mil|Location1.Y=1552.678mil|Location2.Y=1566.855mil|Absolute=True">Width Constraint: Arc (6800mil,1525mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5690.855mil|Location2.X=5709.005mil|Location1.Y=1406mil|Location2.Y=1422.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5690.855mil|Location2.X=5709.005mil|Location1.Y=1406mil|Location2.Y=1422.885mil|Absolute=True">Width Constraint: Track (5700mil,1300mil)(5700mil,1525mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5833.5mil|Location2.X=5858.15mil|Location1.Y=1243.5mil|Location2.Y=1256.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=5833.5mil|Location2.X=5858.15mil|Location1.Y=1243.5mil|Location2.Y=1256.5mil|Absolute=True">Width Constraint: Track (5750mil,1250mil)(5930mil,1250mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6268.5mil|Location2.X=6293.15mil|Location1.Y=1568.5mil|Location2.Y=1581.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6268.5mil|Location2.X=6293.15mil|Location1.Y=1568.5mil|Location2.Y=1581.5mil|Absolute=True">Width Constraint: Track (5750mil,1575mil)(6800mil,1575mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6358.5mil|Location2.X=6383.15mil|Location1.Y=1243.5mil|Location2.Y=1256.5mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6358.5mil|Location2.X=6383.15mil|Location1.Y=1243.5mil|Location2.Y=1256.5mil|Absolute=True">Width Constraint: Track (5930mil,1250mil)(6800mil,1250mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6840.855mil|Location2.X=6859.005mil|Location1.Y=1406mil|Location2.Y=1422.885mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6840.855mil|Location2.X=6859.005mil|Location1.Y=1406mil|Location2.Y=1422.885mil|Absolute=True">Width Constraint: Track (6850mil,1300mil)(6850mil,1525mil) on Top Layer Actual Width = 10mil, Target Width = 11.811mil</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDC2OX2DVR4PAFICBZK2RPCU04ONBJAAKTNCXMBWMCUQB2WDFE4SDC"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6023.891mil|Location2.X=6035.141mil|Location1.Y=1379.769mil|Location2.Y=1391.019mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6023.891mil|Location2.X=6035.141mil|Location1.Y=1379.769mil|Location2.Y=1391.019mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (2.969mil &lt; 10mil) Between Pad J1-2(5994.567mil,1385.394mil) on Top Layer And Via (6050mil,1385.394mil) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [2.969mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6190.351mil|Location2.X=6201.601mil|Location1.Y=1404.375mil|Location2.Y=1415.625mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6190.351mil|Location2.X=6201.601mil|Location1.Y=1404.375mil|Location2.Y=1415.625mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (3.953mil &lt; 10mil) Between Pad U1-2(6217.638mil,1407.598mil) on Top Layer And Via (6175mil,1410mil) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [3.953mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6212.013mil|Location2.X=6223.263mil|Location1.Y=1349.505mil|Location2.Y=1360.755mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6212.013mil|Location2.X=6223.263mil|Location1.Y=1349.505mil|Location2.Y=1360.755mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (4.149mil &lt; 10mil) Between Pad U1-3(6217.638mil,1370.197mil) on Top Layer And Via (6217.638mil,1334.056mil) from Top Layer to Bottom Layer [Top Solder] Mask Sliver [4.149mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDNL0ZZ4GPMSS0IXVTDGUVJO3LUG5VAGYHJ5CPECNL2ZSPOQ4ZTDP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=10mil) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6249.414mil|Location2.X=6260.664mil|Location1.Y=1469.675mil|Location2.Y=1480.925mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6249.414mil|Location2.X=6260.664mil|Location1.Y=1469.675mil|Location2.Y=1480.925mil|Absolute=True">Silk To Silk Clearance Constraint: (9.419mil &lt; 10mil) Between Text "U1" (6232.651mil,1485.01mil) on Top Overlay And Track (6255.039mil,1348.543mil)(6255.039mil,1466.653mil) on Top Overlay Silk Text to Silk Clearance [9.419mil]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6257.016mil|Location2.X=6268.266mil|Location1.Y=1469.675mil|Location2.Y=1480.925mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6257.016mil|Location2.X=6268.266mil|Location1.Y=1469.675mil|Location2.Y=1480.925mil|Absolute=True">Silk To Silk Clearance Constraint: (9.419mil &lt; 10mil) Between Text "U1" (6232.651mil,1485.01mil) on Top Overlay And Track (6255.039mil,1466.653mil)(6282.598mil,1466.653mil) on Top Overlay Silk Text to Silk Clearance [9.419mil]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDAM03FACIN3JSMXVBJDNNA1XIEJQT5Y3VILOCBOJ0BAGS4EQITNQK"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Net Antennae (Tolerance=0mil) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6096.658mil|Location2.X=6130.788mil|Location1.Y=1394.256mil|Location2.Y=1445.84mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6096.658mil|Location2.X=6130.788mil|Location1.Y=1394.256mil|Location2.Y=1445.84mil|Absolute=True">Net Antennae: Track (6110mil,1373.583mil)(6110mil,1407.598mil) on Top Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6027.5mil|Location2.X=6081.566mil|Location1.Y=1362.894mil|Location2.Y=1448.08mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6027.5mil|Location2.X=6081.566mil|Location1.Y=1362.894mil|Location2.Y=1448.08mil|Absolute=True">Net Antennae: Via (6050mil,1385.394mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6087.5mil|Location2.X=6141.566mil|Location1.Y=1302.5mil|Location2.Y=1387.687mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6087.5mil|Location2.X=6141.566mil|Location1.Y=1302.5mil|Location2.Y=1387.687mil|Absolute=True">Net Antennae: Via (6110mil,1325mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6195.138mil|Location2.X=6249.204mil|Location1.Y=1311.556mil|Location2.Y=1396.742mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6195.138mil|Location2.X=6249.204mil|Location1.Y=1311.556mil|Location2.Y=1396.742mil|Absolute=True">Net Antennae: Via (6217.638mil,1334.056mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6402.5mil|Location2.X=6456.566mil|Location1.Y=1287.5mil|Location2.Y=1372.687mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6402.5mil|Location2.X=6456.566mil|Location1.Y=1287.5mil|Location2.Y=1372.687mil|Absolute=True">Net Antennae: Via (6425mil,1310mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6597.894mil|Location2.X=6651.96mil|Location1.Y=1412.106mil|Location2.Y=1497.293mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\PC\Desktop\Hardware\Regulator\REG_PCB.PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=6597.894mil|Location2.X=6651.96mil|Location1.Y=1412.106mil|Location2.Y=1497.293mil|Absolute=True">Net Antennae: Via (6620.394mil,1434.606mil) from Top Layer to Bottom Layer </acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
