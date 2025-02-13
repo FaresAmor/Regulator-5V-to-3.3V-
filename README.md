@@ -34,7 +34,8 @@ Feel free to explore, modify, and contribute! 🚀
 
 
 ![Image Alt](https://github.com/FaresAmor/HARDWARE-Design/blob/403708126704611446c14cd4ab31e6370bbe946b/Reg.png)
-
+## Demo
+Below is a preview of the PCB design:
 
 ![Demo](https://github.com/FaresAmor/HARDWARE-Design/blob/main/reg.gif)
 
