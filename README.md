@@ -36,5 +36,5 @@ Feel free to explore, modify, and contribute! 🚀
 ![Image Alt](https://github.com/FaresAmor/HARDWARE-Design/blob/403708126704611446c14cd4ab31e6370bbe946b/Reg.png)
 
 
-![Demo](https://github.com/YOUR_USERNAME/YOUR_REPO/raw/main/your-image.gif)
+![Demo](https://github.com/FaresAmor/HARDWARE-Design/blob/main/reg.gif)
 
