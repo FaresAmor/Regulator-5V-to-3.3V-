@@ -24,10 +24,6 @@ This project features the design of a simple two-layer PCB in **Altium Designer*
 3. Review and modify the design as needed.
 4. Generate Gerber files for PCB manufacturing.
    
-## 📜 Wiring Diagram of MPU6500 Sensor and ESP32
-Feel free to explore, modify, and contribute! If you find any issues or improvements, open a pull request or raise an issue. 🚀
-![Image Alt](https://github.com/FaresAmor/HARDWARE-Design/blob/403708126704611446c14cd4ab31e6370bbe946b/Reg.png)
-
 
 
 
